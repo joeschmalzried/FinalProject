@@ -31,18 +31,24 @@ Partial Class Form1
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MostExpensiveRoomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CheapestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MostExpensiveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lstRooms = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lstSpecs = New System.Windows.Forms.ListBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnNewRoom = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(397, 24)
@@ -97,6 +103,32 @@ Partial Class Form1
         Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MostExpensiveRoomToolStripMenuItem})
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.OptionsToolStripMenuItem.Text = "Options"
+        '
+        'MostExpensiveRoomToolStripMenuItem
+        '
+        Me.MostExpensiveRoomToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CheapestToolStripMenuItem, Me.MostExpensiveToolStripMenuItem})
+        Me.MostExpensiveRoomToolStripMenuItem.Name = "MostExpensiveRoomToolStripMenuItem"
+        Me.MostExpensiveRoomToolStripMenuItem.Size = New System.Drawing.Size(97, 22)
+        Me.MostExpensiveRoomToolStripMenuItem.Text = "Find"
+        '
+        'CheapestToolStripMenuItem
+        '
+        Me.CheapestToolStripMenuItem.Name = "CheapestToolStripMenuItem"
+        Me.CheapestToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CheapestToolStripMenuItem.Text = "Cheapest"
+        '
+        'MostExpensiveToolStripMenuItem
+        '
+        Me.MostExpensiveToolStripMenuItem.Name = "MostExpensiveToolStripMenuItem"
+        Me.MostExpensiveToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.MostExpensiveToolStripMenuItem.Text = "Most expensive"
+        '
         'lstRooms
         '
         Me.lstRooms.FormattingEnabled = True
@@ -149,11 +181,30 @@ Partial Class Form1
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(37, 196)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(31, 13)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "Cost:"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(74, 196)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(0, 13)
+        Me.lblTotal.TabIndex = 9
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(397, 303)
+        Me.Controls.Add(Me.lblTotal)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnNewRoom)
         Me.Controls.Add(Me.Label2)
@@ -186,4 +237,10 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents btnNewRoom As Button
     Friend WithEvents btnClose As Button
+    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MostExpensiveRoomToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CheapestToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MostExpensiveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblTotal As Label
 End Class
