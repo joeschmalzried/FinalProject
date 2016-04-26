@@ -41,8 +41,6 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnNewRoom = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblTotal = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -51,7 +49,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(397, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(400, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -149,15 +147,17 @@ Partial Class Form1
         'lstSpecs
         '
         Me.lstSpecs.FormattingEnabled = True
-        Me.lstSpecs.Location = New System.Drawing.Point(229, 68)
+        Me.lstSpecs.HorizontalScrollbar = True
+        Me.lstSpecs.Location = New System.Drawing.Point(168, 68)
         Me.lstSpecs.Name = "lstSpecs"
-        Me.lstSpecs.Size = New System.Drawing.Size(120, 95)
+        Me.lstSpecs.Size = New System.Drawing.Size(217, 95)
+        Me.lstSpecs.Sorted = True
         Me.lstSpecs.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(255, 52)
+        Me.Label2.Location = New System.Drawing.Point(237, 52)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(71, 13)
         Me.Label2.TabIndex = 4
@@ -165,7 +165,7 @@ Partial Class Form1
         '
         'btnNewRoom
         '
-        Me.btnNewRoom.Location = New System.Drawing.Point(295, 268)
+        Me.btnNewRoom.Location = New System.Drawing.Point(298, 221)
         Me.btnNewRoom.Name = "btnNewRoom"
         Me.btnNewRoom.Size = New System.Drawing.Size(90, 23)
         Me.btnNewRoom.TabIndex = 5
@@ -174,37 +174,18 @@ Partial Class Form1
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(12, 268)
+        Me.btnClose.Location = New System.Drawing.Point(12, 221)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 7
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(37, 196)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(31, 13)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Cost:"
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(74, 196)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(0, 13)
-        Me.lblTotal.TabIndex = 9
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(397, 303)
-        Me.Controls.Add(Me.lblTotal)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(400, 254)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnNewRoom)
         Me.Controls.Add(Me.Label2)
@@ -241,6 +222,4 @@ Partial Class Form1
     Friend WithEvents MostExpensiveRoomToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CheapestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MostExpensiveToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Label3 As Label
-    Friend WithEvents lblTotal As Label
 End Class

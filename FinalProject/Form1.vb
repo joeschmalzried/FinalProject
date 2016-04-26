@@ -1,8 +1,13 @@
-﻿Public Class Form1
+﻿
+
+Public Class Form1
+    Public bookList As New Dictionary(Of String, Room)
+    Public roomCost As Decimal
+    Public Num As Integer
+    Public Nights As Integer
 
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Me.Close()
-
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -32,6 +37,10 @@
     Private Sub ResetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetToolStripMenuItem.Click
         lstRooms.Items.Clear()
         lstSpecs.Items.Clear()
+        bookList.Clear()
+        Num = 0
+        roomCost = 0
+        Nights = 0
     End Sub
 
     Private Sub DeleteRoomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteRoomToolStripMenuItem.Click
@@ -43,24 +52,35 @@
     End Sub
 
     Private Sub CheapestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheapestToolStripMenuItem.Click
-        RoomType.Num = lstRooms.Items.Count() + 1
-        lstRooms.Items.Add("Single Room " & RoomType.Num)
-        RoomType.Num = lstRooms.Items.Count() + 1
+        Num += 1
+        RoomType.roomType = "Single room"
+        roomCost = 75
+        lstRooms.Items.Add(Num & ")" & "Single Room")
         Me.Hide()
         NumberOfNights.ShowDialog()
     End Sub
 
     Private Sub MostExpensiveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MostExpensiveToolStripMenuItem.Click
-        RoomType.Num = lstRooms.Items.Count() + 1
-        lstRooms.Items.Add("Grande Room " & RoomType.Num)
-        RoomType.Num = lstRooms.Items.Count() + 1
+        Num += 1
+        RoomType.roomType = "Grande Room"
+        roomCost = 175
+        lstRooms.Items.Add(Num & " )" & "Grande Room")
         Me.Hide()
         NumberOfNights.ShowDialog()
     End Sub
 
-    Sub ShowCost()
-        Dim cost As Decimal
-        cost += Accommodations.total + NumberOfNights.Nights * RoomType.roomCost
+    Private Sub lstRooms_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstRooms.SelectedIndexChanged
+        lstSpecs.Items.Clear()
+        Dim aRoom As Room = bookList(lstRooms.SelectedIndex + 1)
+        If aRoom Is Nothing Then
+            lstSpecs.Items.Add("fix")
+        Else
+            lstSpecs.Items.Add("Room Type:  " & aRoom.RoomType)
+            lstSpecs.Items.Add("Number of Nights " & aRoom.Nights)
+            lstSpecs.Items.Add(aRoom.Accom)
+            lstSpecs.Items.Add("Total: $" & aRoom.Total)
+        End If
     End Sub
-
 End Class
+
+

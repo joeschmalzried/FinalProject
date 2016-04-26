@@ -110,9 +110,9 @@ Partial Class Accommodations
         Me.chkBathrooms.AutoSize = True
         Me.chkBathrooms.Location = New System.Drawing.Point(142, 92)
         Me.chkBathrooms.Name = "chkBathrooms"
-        Me.chkBathrooms.Size = New System.Drawing.Size(106, 17)
+        Me.chkBathrooms.Size = New System.Drawing.Size(85, 17)
         Me.chkBathrooms.TabIndex = 7
-        Me.chkBathrooms.Text = "1 or 2 Bathrooms"
+        Me.chkBathrooms.Text = "2 Bathrooms"
         Me.chkBathrooms.UseVisualStyleBackColor = True
         '
         'chkSeperateRoom

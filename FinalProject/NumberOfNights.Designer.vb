@@ -66,7 +66,7 @@ Partial Class NumberOfNights
         Me.txtNights.Location = New System.Drawing.Point(91, 44)
         Me.txtNights.Name = "txtNights"
         Me.txtNights.Size = New System.Drawing.Size(100, 20)
-        Me.txtNights.TabIndex = 4
+        Me.txtNights.TabIndex = 1
         '
         'errProvider
         '

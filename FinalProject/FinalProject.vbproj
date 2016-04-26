@@ -106,6 +106,7 @@
     <Compile Include="NumberOfNights.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Room.vb" />
     <Compile Include="RoomType.Designer.vb">
       <DependentUpon>RoomType.vb</DependentUpon>
     </Compile>

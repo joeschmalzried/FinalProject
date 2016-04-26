@@ -1,55 +1,58 @@
-﻿Public Class RoomType
-    Public roomCost As Decimal
+﻿Imports System.IO
+Imports System.IO.File
+
+Public Class RoomType
+    Public roomType As String
+    Dim list As New List(Of String)
+    Private ReadOnly FILEPATH As String = "roomInfo.txt"
+
     Private Sub btnInformation_Click(sender As Object, e As EventArgs) Handles btnInformation.Click
         If radSingle.Checked Then
-            MessageBox.Show("Single Rooms provide a space of 30-40 meters squared, offering a
-comfortable stay for one guest.", "Single Room Information")
-            roomCost = 75
+            MessageBox.Show(list(1).ToString(), list(0).ToString())
+            Form1.roomCost = 75
         ElseIf radDouble.Checked Then
-            MessageBox.Show("Double Rooms provide a space of 35-42 meters squared, offering a 
-comfortable stay for one or two guests.", "Double Room Information")
-            roomCost = 85
+            MessageBox.Show(list(3).ToString(), list(2).ToString())
+            Form1.roomCost = 85
         ElseIf radJunior.Checked Then
-            MessageBox.Show("Featuring an elegant space of 45-60 meters squared. our Junior Suites
-invite you to enjoy your vacations with an air of discrete luxury", "Junior Suite Information")
-            roomCost = 95
+            MessageBox.Show(list(5).ToString(), list(4).ToString())
+            Form1.roomCost = 95
         ElseIf radSuperior.Checked Then
-            MessageBox.Show("For those that with to enjoy your vacations in style, the Superior Suite
-is the ideal choice. Two levels and 75 meters squared give you the space you need for unique vacations.",
-                            "Superior Sutie Information")
-            roomCost = 110
+            MessageBox.Show(list(7).ToString(), list(6).ToString())
+            Form1.roomCost = 110
         ElseIf radExecutive.Checked Then
-            MessageBox.Show("The Executive Suites are the preferred choice for families with children 
-or companies of up to 4 guests.", "Executive Suite Information")
-            roomCost = 130
+            MessageBox.Show(list(9).ToString(), list(8).ToString())
+            Form1.roomCost = 130
         ElseIf radFamily.Checked Then
-            MessageBox.Show("The Family Suite is the preferred choice for families with children or 
-companies of up to 4 guests.", "Family Suite Information")
-            roomCost = 140
+            MessageBox.Show(list(11).ToString(), list(10).ToString())
+            Form1.roomCost = 140
         ElseIf radGrande.Checked Then
-            MessageBox.Show("The preferred choice for groups of up to 6 guests, the Grande Suite offers 
-3 separate bedrooms and a spacious living room at a total of 175 meters squared,
-providing you with a unique stay experience.", "Grande Suite Information")
-            roomCost = 175
+            MessageBox.Show(list(13).ToString(), list(12).ToString())
+            Form1.roomCost = 175
         End If
     End Sub
-    Public Num As Integer
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If radSingle.Checked Then
-            Form1.lstRooms.Items.Add("Single Room " & Num)
+            roomType = list(0)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radDouble.Checked Then
-            Form1.lstRooms.Items.Add("Double Room " & Num)
+            roomType = list(2)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radJunior.Checked Then
-            Form1.lstRooms.Items.Add("Junior Room " & Num)
+            roomType = list(4)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radSuperior.Checked Then
-            Form1.lstRooms.Items.Add("Superior Room " & Num)
+            roomType = list(6)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radExecutive.Checked Then
-            Form1.lstRooms.Items.Add("Executive Room " & Num)
+            roomType = list(8)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radFamily.Checked Then
-            Form1.lstRooms.Items.Add("Family Room " & Num)
+            roomType = list(10)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         ElseIf radGrande.Checked Then
-            Form1.lstRooms.Items.Add("Grande Room " & Num)
+            roomType = list(12)
+            Form1.lstRooms.Items.Add(Form1.Num & ") " & roomType.ToString)
         End If
         Me.Hide()
         NumberOfNights.ShowDialog()
@@ -57,10 +60,27 @@ providing you with a unique stay experience.", "Grande Suite Information")
     End Sub
 
     Private Sub RoomType_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Num = Form1.lstRooms.Items.Count() + 1
+        Form1.Num += 1
+        Dim infile As StreamReader = Nothing
+        Dim index As Integer = 0
+        Try
+            infile = OpenText(FILEPATH)
+            While Not infile.EndOfStream
+                Dim entireLine As String = infile.ReadLine()
+                Dim fields() As String = entireLine.Split(","c)
+                For num As Integer = LBound(fields) To UBound(fields)
+                    list.Add(fields(num))
+                    num += 1
+                Next
+            End While
+            infile.Close()
+        Catch ex As Exception
+            MessageBox.Show("error")
+        End Try
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
+        Form1.Show()
     End Sub
 End Class
