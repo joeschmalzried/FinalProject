@@ -37,10 +37,10 @@ Partial Class Form1
         Me.MostExpensiveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lstRooms = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lstSpecs = New System.Windows.Forms.ListBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnNewRoom = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.lstSpecs = New System.Windows.Forms.ListBox()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -144,16 +144,6 @@ Partial Class Form1
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Your Rooms:"
         '
-        'lstSpecs
-        '
-        Me.lstSpecs.FormattingEnabled = True
-        Me.lstSpecs.HorizontalScrollbar = True
-        Me.lstSpecs.Location = New System.Drawing.Point(168, 68)
-        Me.lstSpecs.Name = "lstSpecs"
-        Me.lstSpecs.Size = New System.Drawing.Size(217, 95)
-        Me.lstSpecs.Sorted = True
-        Me.lstSpecs.TabIndex = 3
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -181,15 +171,24 @@ Partial Class Form1
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
+        'lstSpecs
+        '
+        Me.lstSpecs.FormattingEnabled = True
+        Me.lstSpecs.HorizontalScrollbar = True
+        Me.lstSpecs.Location = New System.Drawing.Point(188, 68)
+        Me.lstSpecs.Name = "lstSpecs"
+        Me.lstSpecs.Size = New System.Drawing.Size(200, 95)
+        Me.lstSpecs.TabIndex = 8
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(400, 254)
+        Me.Controls.Add(Me.lstSpecs)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnNewRoom)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lstSpecs)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lstRooms)
         Me.Controls.Add(Me.MenuStrip1)
@@ -214,7 +213,6 @@ Partial Class Form1
     Friend WithEvents DeleteSpecToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lstRooms As ListBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents lstSpecs As ListBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnNewRoom As Button
     Friend WithEvents btnClose As Button
@@ -222,4 +220,5 @@ Partial Class Form1
     Friend WithEvents MostExpensiveRoomToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CheapestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MostExpensiveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lstSpecs As ListBox
 End Class

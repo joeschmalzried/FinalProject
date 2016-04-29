@@ -9,6 +9,44 @@ Public Class Accommodations
     Dim aName As New List(Of String)
     Private ReadOnly FILEPATH As String = "accomCost.txt"
     Private ReadOnly READFILE As String = "accomName.txt"
+
+    Private Sub Accommodations_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        list.Clear()
+        Dim infile As StreamReader = Nothing
+
+        Try
+            infile = OpenText(FILEPATH)
+            While Not infile.EndOfStream
+                Dim entireLine As String = infile.ReadLine()
+                Dim fields() As String = entireLine.Split(","c)
+                For num As Integer = LBound(fields) To UBound(fields)
+                    Dim temp As String = fields(num)
+                    list.Add(CDec(temp))
+                Next
+            End While
+            infile.Close()
+        Catch ex As Exception
+            MessageBox.Show("error")
+        End Try
+        aName.Clear()
+        Dim fileIn As StreamReader = Nothing
+
+        Try
+            fileIn = OpenText(READFILE)
+            While Not fileIn.EndOfStream
+                Dim entire As String = fileIn.ReadLine()
+                Dim names() As String = entire.Split(","c)
+                For num As Integer = LBound(names) To UBound(names)
+                    Dim temp As String = names(num)
+                    aName.Add(names(num))
+                Next
+            End While
+            fileIn.Close()
+        Catch ex As Exception
+            MessageBox.Show("error")
+        End Try
+    End Sub
+
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
         Form1.Show()
@@ -62,52 +100,17 @@ Public Class Accommodations
                                            {.RoomType = RoomType.roomType.ToString, .Nights = Form1.Nights.ToString,
                                            .Accom = temp.ToString, .Total = price.ToString})
         reset()
+        Form1.save()
         Me.Close()
         Form1.Show()
     End Sub
 
     Function calcCost() As Double
         Dim cost As Double
-        cost = total + Form1.roomCost * Form1.Nights
+        Dim math As Double = RoomType.roomCost * Form1.Nights
+        cost = total + math
         Return cost
     End Function
-
-    Private Sub Accommodations_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        list.Clear()
-        Dim infile As StreamReader = Nothing
-
-        Try
-            infile = OpenText(FILEPATH)
-            While Not infile.EndOfStream
-                Dim entireLine As String = infile.ReadLine()
-                Dim fields() As String = entireLine.Split(","c)
-                For num As Integer = LBound(fields) To UBound(fields)
-                    Dim temp As String = fields(num)
-                    list.Add(CDec(temp))
-                Next
-            End While
-            infile.Close()
-        Catch ex As Exception
-            MessageBox.Show("error")
-        End Try
-        aName.Clear()
-        Dim fileIn As StreamReader = Nothing
-
-        Try
-            fileIn = OpenText(READFILE)
-            While Not fileIn.EndOfStream
-                Dim entire As String = fileIn.ReadLine()
-                Dim names() As String = entire.Split(","c)
-                For num As Integer = LBound(names) To UBound(names)
-                    Dim temp As String = names(num)
-                    aName.Add(names(num))
-                Next
-            End While
-            fileIn.Close()
-        Catch ex As Exception
-            MessageBox.Show("error")
-        End Try
-    End Sub
 
     Public Sub reset()
         chkBalcony.Checked = False
